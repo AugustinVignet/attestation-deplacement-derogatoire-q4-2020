@@ -61,7 +61,7 @@ const createFormGroup = ({
   const input = createElement('input', inputAttrs)
 
   if (name === 'heuresortie') {
-    input.value = getCurrentTime()
+    //input.value = getCurrentTime()
   }
 
   const validityAttrs = {

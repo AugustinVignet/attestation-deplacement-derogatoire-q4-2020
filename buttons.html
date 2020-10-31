@@ -11,16 +11,115 @@
     <link rel="apple-touch-icon" sizes="180x180" href="./favicons/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="./favicons/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="./favicons/favicon-16x16.png" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <title>Buttons</title>
+
+    <style>
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      display: -ms-flexbox;
+      display: -webkit-box;
+      display: flex;
+      -ms-flex-align: center;
+      -ms-flex-pack: center;
+      -webkit-box-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      justify-content: center;
+      padding-top: 40px;
+      padding-bottom: 40px;
+      background-color: #f5f5f5;
+    }
+
+    .form-signin {
+      width: 100%;
+      max-width: 330px;
+      padding: 15px;
+      margin: 0 auto;
+    }
+    .form-signin .checkbox {
+      font-weight: 400;
+    }
+    .form-signin .form-control {
+      position: relative;
+      box-sizing: border-box;
+      height: auto;
+      padding: 10px;
+      font-size: 16px;
+    }
+    .form-signin .form-control:focus {
+      z-index: 2;
+    }
+    .form-signin input[type="email"] {
+      margin-bottom: -1px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    .form-signin input[type="password"] {
+      margin-bottom: 10px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+    .jumbotron {
+        padding: 1rem 1rem;
+    }
+    .btn-block {
+        display: inline;
+        width: 50%;
+    }
+
+    .btn-group-sm>.btn, .btn-sm {
+        padding: .25rem .5rem;
+        font-size: .875rem;
+        line-height: 1;
+        border-radius: .2rem;
+    }
+    p {
+        margin-top: 0;
+        margin-bottom: 0rem;
+    }
+    </style>
+
+
 </head>
 
-<body>
-    <div class="container">
-        <input type="button" onclick="location.href='/flo';" value="Flo (sport)" />
-        <input type="button" onclick="location.href='/gus';" value="Gus (sport)" />
-        <input type="button" onclick="location.href='/flo?type=enfants';" value="Flo (Momo)" />
-        <input type="button" onclick="location.href='/gus?type=enfants';" value="Gus (Momo)" />
-    </div>
-</body>
+
+    <body class="text-center">
+        <form class="form-signin">
+          <h1 class="h3 mb-3 font-weight-normal">Covid Générator</h1>
+
+
+          <div class="jumbotron">
+              <p class="lead">Sport</p>
+              <a class="btn btn-sm btn-outline-primary btn-block" href='/flo'> Flo 🏄‍♀️</a>
+              <a class="btn btn-sm btn-outline-primary btn-block" href='/gus'>Gus ⛹️‍♂️</a>
+          </div>
+
+          <div class="jumbotron">
+                <p class="lead">Momo</p>
+                <a class="btn btn-sm btn-outline-primary btn-block" href='/flo?type=enfants'>Flo 👶</a>
+                <a class="btn btn-sm btn-outline-primary btn-block" href='/gus?type=enfants'>Gus 🐣</a>
+          </div>
+
+          <div class="jumbotron">
+            <p class="lead">Express -30</p>
+            <a class="btn btn-sm btn-outline-danger btn-block" href='/flo?express=30'>Flo 🚨</a>
+            <a class="btn btn-sm btn-outline-danger btn-block" href='/gus?express=30'>Gus 🚨</a>
+          </div>
+
+        </form>
+      </body>
+      <script>
+        function redirect(url)
+        {
+            console.log("redirect", url)
+             location.href = url;
+        }
+        </script>
 </html>

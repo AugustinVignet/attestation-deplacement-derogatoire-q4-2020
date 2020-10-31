@@ -8,7 +8,7 @@ import { prepareForm } from './form-util'
 import { warnFacebookBrowserUserIfNecessary } from './facebook-util'
 import { addVersion } from './util'
 import { createForm } from './form'
-import { format } from 'date-fns'
+import { format, subMinutes } from 'date-fns'
 
 export const $ = (...args) => document.querySelector(...args)
 
@@ -18,6 +18,8 @@ async function writeToForm () {
     const dataUrl = decodeURIComponent(urlParams.get('data'))
     console.log("dataUrl", dataUrl)
     const type = decodeURIComponent(urlParams.get('type'))
+    const express = decodeURIComponent(urlParams.get('express'))
+    const expressInt = parseInt(express)
     const dataParsed = JSON.parse(dataUrl)
     console.log("dataParsed", dataParsed)
     if (dataParsed) {
@@ -26,8 +28,19 @@ async function writeToForm () {
             const fieldData = dataParsed[field]
             $(field).setAttribute('value', fieldData)
         })
+        let heure
+        console.log("expressInt", expressInt)
+
+        if (expressInt) {
+            heure = format(subMinutes(new Date(), expressInt), 'HH:mm')
+
+        } else {
+            heure = format(new Date(), 'HH:mm')
+        }
+
+        console.log("heure", heure)
+        $('#field-heuresortie').setAttribute('value', heure)
         $('#field-datesortie').setAttribute('value', format(new Date(), 'yyyy-MM-dd'))
-        $('#field-heuresortie').setAttribute('value', format(new Date(), 'hh-mm'))
 
         if (type == 'enfants') {
             $("#checkbox-enfants").setAttribute('checked', true)
