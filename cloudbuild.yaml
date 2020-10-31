@@ -8,7 +8,7 @@ steps:
   # Npm build
   - id: npm-build
     name: 'gcr.io/cloud-builders/npm'
-    args: ['myBuild']
+    args: ['run', 'myBuild']
     waitFor: ['-']
 
   # Deploy to cloud function
