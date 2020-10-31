@@ -11,11 +11,11 @@ app.use('/dist', express.static('dist'));
 
 // Serve the TEST_VAR_1 env var on the /env route (used for testing env)
 app.get('/gus', (req, res) => {
-    res.status(302).redirect(`/index?data=${encodeURIComponent(JSON.stringify(gus))}`)
+    res.status(302).redirect(`/index?data=${encodeURIComponent(JSON.stringify(gus))}&type=${req.query.type}`)
 });
 
 app.get('/flo', (req, res) => {
-    res.status(302).redirect(`/index?data=${encodeURIComponent(JSON.stringify(flo))}`)
+    res.status(302).redirect(`/index?data=${encodeURIComponent(JSON.stringify(flo))}&type=${req.query.type}`)
 });
 
 app.get('/index', (req, res) => {
