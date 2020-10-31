@@ -1,15 +1,14 @@
 steps:
   # Npm install all the dependencies
   - id: npm-install
-    name: 'gcr.io/cloud-builders/npm'
+    name: 'node'
+    entrypoint: 'npm'
     args: ['install']
-    waitFor: ['-']
 
   # Npm build
   - id: npm-build
     name: 'gcr.io/cloud-builders/npm'
     args: ['run', 'myBuild']
-    waitFor: ['-']
 
   # Deploy to cloud function
   - id: deploy-to-cloud-function
@@ -24,5 +23,4 @@ steps:
         '--trigger-http',
         '--allow-unauthenticated',
       ]
-    waitFor: ['npm-install']
 timeout: '1600s'
