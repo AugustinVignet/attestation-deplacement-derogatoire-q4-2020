@@ -149,7 +149,7 @@ export function prepareInputs (formInputs, reasonInputs, reasonFieldset, reasonA
   })
 }
 
-export function prepareForm () {
+export async function prepareForm () {
   const formInputs = $$('#form-profile input')
   const snackbar = $('#snackbar')
   const reasonInputs = [...$$('input[name="field-reason"]')]

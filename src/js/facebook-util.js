@@ -1,6 +1,6 @@
 import { $ } from './dom-utils'
 
-export function warnFacebookBrowserUserIfNecessary () {
+export async function warnFacebookBrowserUserIfNecessary () {
   if (isFacebookBrowser()) {
     const alertFacebookElt = $('#alert-facebook')
     alertFacebookElt.value =

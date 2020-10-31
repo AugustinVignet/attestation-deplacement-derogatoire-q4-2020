@@ -1,0 +1,23 @@
+steps:
+  # Npm install all the dependencies
+  - id: npm-install
+    name: 'gcr.io/cloud-builders/npm'
+    args: ['install']
+    waitFor: ['-']
+
+  # Deploy to cloud function
+  - id: deploy-to-cloud-function
+    name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      [
+        'functions',
+        'deploy',
+        'covidGus',
+        '--entry-point=covidGus',
+        '--runtime=nodejs10',
+        '--service-account=radio-agnes-bucket@radio-agnes.iam.gserviceaccount.com',
+        '--trigger-http',
+        '--allow-unauthenticated',
+      ]
+    waitFor: ['npm-install']
+timeout: '1600s'

@@ -133,7 +133,7 @@ const createReasonFieldset = (reasonsData) => {
   return fieldset
 }
 
-export function createForm () {
+export async function createForm () {
   const form = $('#form-profile')
   // Évite de recréer le formulaire s'il est déjà créé par react-snap (ou un autre outil de prerender)
   if (form.innerHTML !== '') {
