@@ -1,0 +1,4 @@
+# Deploy using App Engine standard env (app in prod env) -
+runtime: nodejs10
+service: default
+entrypoint: node ./server.js

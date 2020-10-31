@@ -11,16 +11,21 @@ steps:
     args: ['run', 'myBuild']
 
   # Deploy to cloud function
-  - id: deploy-to-cloud-function
-    name: 'gcr.io/cloud-builders/gcloud'
+  #- id: deploy-to-cloud-function
+  #  name: 'gcr.io/cloud-builders/gcloud'
+  #  args:
+  #    [
+  #      'functions',
+  #      'deploy',
+  #     'covidGus',
+  #      '--entry-point=covidGus',
+  #     '--runtime=nodejs10',
+  #      '--trigger-http',
+  #      '--allow-unauthenticated',
+  #   ]
+
+  - name: 'gcr.io/cloud-builders/gcloud'
     args:
-      [
-        'functions',
-        'deploy',
-        'covidGus',
-        '--entry-point=covidGus',
-        '--runtime=nodejs10',
-        '--trigger-http',
-        '--allow-unauthenticated',
-      ]
+      ['app', 'deploy', 'app_engine.yaml', '--project', 'covid-gus', '--quiet']
+
 timeout: '1600s'
