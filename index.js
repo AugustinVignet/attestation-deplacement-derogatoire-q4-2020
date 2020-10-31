@@ -6,7 +6,12 @@ const path = require('path');
 const app = express();
 
 // Serve up production assets
-app.use(express.static('dist'));
+app.use('/dist', express.static('dist'));
+
+// Serve the TEST_VAR_1 env var on the /env route (used for testing env)
+app.get('/gus', (req, res) => {
+    res.status(302).redirect('/?gus=1')
+});
 
 // Serve up the index.html if express doesn't recognize the route
 app.get('*', (req, res) => {
