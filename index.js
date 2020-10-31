@@ -1,6 +1,7 @@
 'use strict';
 const express = require('express');
 const path = require('path');
+let {gus, flo} = require('./data');
 
 // Express
 const app = express();
@@ -10,13 +11,25 @@ app.use('/dist', express.static('dist'));
 
 // Serve the TEST_VAR_1 env var on the /env route (used for testing env)
 app.get('/gus', (req, res) => {
-    res.status(302).redirect('/?gus=1')
+    res.status(302).redirect(`/index?data=${encodeURIComponent(JSON.stringify(gus))}`)
+});
+
+app.get('/flo', (req, res) => {
+    res.status(302).redirect(`/index?data=${encodeURIComponent(JSON.stringify(flo))}`)
+});
+
+app.get('/index', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
+  });
+
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'buttons.html'));
 });
 
 // Serve up the index.html if express doesn't recognize the route
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
-});
+//app.get('*', (req, res) => {
+//  res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
+//});
 
 exports.covidGus = app;
 
