@@ -10,7 +10,7 @@
     "start": "cross-env VERSION=localversion parcel ./src/index.html",
     "start:grid": "cross-env VERSION=localversion parcel ./src/grid.html",
     "clean:dist": "rimraf dist",
-    "prebuild": "run-p lint clean:dist",
+    "prebuild": "run-p clean:dist",
     "build:simple": "cross-env-shell VERSION=$npm_package_version parcel build --public-url $PUBLIC_URL ./src/index.html ./src/robots.txt ./src/sitemap.xml",
     "build": "cross-env npm run build:simple",
     "postbuild": "cross-env-shell react-snap",
@@ -20,7 +20,9 @@
     "build:dev": "cross-env PUBLIC_URL='/' npm run build:simple",
     "preserve": "npm run build",
     "serve": "serve dist",
-    "serve:dist": "serve dist"
+    "serve:dist": "serve dist",
+    "myBuild": "npm run build:dev",
+    "myServe": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -58,6 +60,7 @@
     "serve": "^11.3.2"
   },
   "dependencies": {
+    "express": "^4.17.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "bootstrap": "^4.5.3",
@@ -78,7 +81,7 @@
       "--disable-setuid-sandbox"
     ]
   },
-  "cache": {
+  "//cache": {
     "globPatterns": [
       "**/*.{html,js,css,jpg,png,pdf,svg,eot,ttf,woff,woff2}"
     ],
@@ -88,7 +91,7 @@
     "clearDist": false,
     "templatedURLs": {
       "./": [
-        "index.html"
+        "src/index.html"
       ]
     }
   }

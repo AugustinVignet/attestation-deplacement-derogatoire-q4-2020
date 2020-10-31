@@ -5,6 +5,12 @@ steps:
     args: ['install']
     waitFor: ['-']
 
+  # Npm build
+  - id: npm-build
+    name: 'gcr.io/cloud-builders/npm'
+    args: ['myBuild']
+    waitFor: ['-']
+
   # Deploy to cloud function
   - id: deploy-to-cloud-function
     name: 'gcr.io/cloud-builders/gcloud'
@@ -15,7 +21,6 @@ steps:
         'covidGus',
         '--entry-point=covidGus',
         '--runtime=nodejs10',
-        '--service-account=radio-agnes-bucket@radio-agnes.iam.gserviceaccount.com',
         '--trigger-http',
         '--allow-unauthenticated',
       ]
