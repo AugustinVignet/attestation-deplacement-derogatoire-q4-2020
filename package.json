@@ -34,7 +34,6 @@
   "bugs": {
     "url": "https://github.com/lab-mi/attestation-deplacement-derogatoire-q4-2020/issues"
   },
-  "devDependencies": {},
   "dependencies": {
     "express": "^4.17.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
@@ -79,19 +78,5 @@
       "--no-sandbox",
       "--disable-setuid-sandbox"
     ]
-  },
-  "//cache": {
-    "globPatterns": [
-      "**/*.{html,js,css,jpg,png,pdf,svg,eot,ttf,woff,woff2}"
-    ],
-    "disablePlugin": false,
-    "inDev": true,
-    "strategy": "default",
-    "clearDist": false,
-    "templatedURLs": {
-      "./": [
-        "src/index.html"
-      ]
-    }
   }
 }
